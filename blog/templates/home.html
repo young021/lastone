@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>메인페이지 입니다.</h1>
+    {% if user.is_authenticated %}
+    안녕하세요 {{user.username}}님 <br>
+    마지막 접속일 {{user.last_login}} 입니다.
+    
+    <a href="{%url 'logout'%}"><p>로그아웃</p></a>
+    {% else %}
+    <a href="{%url 'signup'%}"><p>회원가입</p></a>
+    <a href="{%url 'login'%}"><p>로그인</p></a>
+
+
+    {% endif %}
+    <a href="{%url 'new'%}"><h1>글쓰기</h1></a> <!--하이퍼링크 누르면 url로 이동!-->
+
+
+    
+</body>
+</html>
+
+<!-- 마이그레이션 작업:
+터미널에 python manage.py makemigrations
+        python manage.py migrate
+
+        오류뜨면 이거 다시 치고 서버돌리고 화면을 확인
+        아무것도 없으면 admin에서 blog 탭에서 글 작성
+        def 함수 다음 함수에는 들여쓰기 해주기 
+    url.py 에 import blog.views 써주기
+-->
+        
